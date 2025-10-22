@@ -26,6 +26,8 @@ interface Props {
 
 export default function SortUsers({...props}: Props) {
     const [popoverSortActive, setPopoverSortActive] = useState(false);
+    const [currCategory, setCurrCategory] = useState("First name")
+    const [currOrder, setCurrOrder] = useState("asc")
     const dispatch = useDispatch()
 
     const toggleSortPopoverActive = useCallback(
@@ -33,18 +35,17 @@ export default function SortUsers({...props}: Props) {
         [],
     );
 
-    const handleOrderChange = useCallback(
+    const handleChange = useCallback(
         (value: string) => {
             if (value === 'Ascending') {
-                props.setCurrParams({...props.currParams, order: 'asc'})
-            } else props.setCurrParams({...props.currParams, order: 'desc'})
+                setCurrOrder('asc')
+            } else if (value === "Descending") {
+                setCurrOrder('desc')
+            } else {
+                setCurrCategory(value)
+            }
         },
         [],
-    )
-
-    const handleCategoryChange = useCallback(
-        (value: string) => props.setCurrParams({...props.currParams, category: value}),
-        []
     )
 
     const filterActivator = (
@@ -54,14 +55,14 @@ export default function SortUsers({...props}: Props) {
     )
 
     const onSort = () => {
-        dispatch(setSortCategory(toCamelCase(props.currParams.category)))
-        dispatch(setOrder(props.currParams.order))
+        dispatch(setSortCategory(toCamelCase(currCategory)))
+        dispatch(setOrder(currOrder))
     }
 
     const handleClearAll = () => {
         dispatch(clearSorts())
-        props.setCurrParams({...props.currParams, category: 'First name'})
-        props.setCurrParams({...props.currParams, order: 'asc'})
+        setCurrCategory("First name")
+        setCurrOrder("asc")
     } 
 
     return (
@@ -76,14 +77,14 @@ export default function SortUsers({...props}: Props) {
             <Select 
                 label="Category" 
                 options={['First name', 'Last name', 'Age']}
-                value={props.currParams.category}
-                onChange={handleCategoryChange}
+                value={currCategory}
+                onChange={handleChange}
             />
             <Select
                 label="Order"
                 options={['Ascending', 'Descending']}
-                value={(props.currParams.order === 'asc') ? 'Ascending' : 'Descending'}
-                onChange={handleOrderChange}
+                value={(currOrder === 'asc') ? 'Ascending' : 'Descending'}
+                onChange={handleChange}
             />
             <ButtonGroup>
                 <Button size="slim" onClick={onSort}>Sort</Button>

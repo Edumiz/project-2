@@ -17,7 +17,7 @@ export const apiCaller = createApi({
   reducerPath: 'apiCaller',
   refetchOnMountOrArgChange: 30,
   baseQuery: fetchBaseQuery({
-    baseUrl: import.meta.env.VITE_REACT_APP_API_END_POINT,
+    baseUrl: "https://dummyjson.com",
     prepareHeaders: (headers) => {
       if (import.meta.env.REACT_APP_ENV === 'production') {
         headers.set('Content-Security-Policy', `frame-ancestors https://${params.shop} https://admin.shopify.com`);

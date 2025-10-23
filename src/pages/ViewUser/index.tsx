@@ -5,6 +5,7 @@ import {
   Card,
   InlineGrid,
   Text,
+  Thumbnail,
 } from '@shopify/polaris';
 import { ArrowLeftIcon, EditIcon, DeleteIcon } from "@shopify/polaris-icons"
 import { useParams, useNavigate } from "react-router-dom"
@@ -38,6 +39,12 @@ export default function ViewUser() {
                             <Text as="p" variant="bodyLg" fontWeight="bold">
                                 {user.firstName} {user.lastName}
                             </Text>
+                            <Thumbnail
+                                source={(user.image) ? user.image : ""}
+                                size='large'
+                                alt={"Avatar of " + user.firstName + user.lastName}
+                            >
+                            </Thumbnail>
                         </BlockStack>
                         <BlockStack gap="200">
                             <InlineGrid columns="1fr auto">

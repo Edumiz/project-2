@@ -102,7 +102,7 @@ export default function Dashboard() {
   return (
     <DashboardStyled>
       <Card>
-        <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
+        <div className="btn-group">
           <Button
             icon={PlusIcon}
             onClick={() => {navigate('/add')}}
@@ -110,7 +110,7 @@ export default function Dashboard() {
           >
             Add user
           </Button>
-          <div style={{display: 'flex', gap: '10px'}}>
+          <div className="btn-right-group">
             <FilterUsers 
               filterParams={filterParams}
               currParams={currFilterParams}

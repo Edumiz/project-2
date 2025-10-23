@@ -5,8 +5,7 @@ import {
   ButtonGroup,
   Card,
   InlineGrid,
-  Text,
-  Thumbnail,
+  Text
 } from '@shopify/polaris';
 import { ArrowLeftIcon, EditIcon, DeleteIcon } from "@shopify/polaris-icons"
 import { useParams, useNavigate } from "react-router-dom"
@@ -37,7 +36,7 @@ export default function ViewUser() {
                             <Text as="h2" variant="headingXl">
                                 User
                             </Text>
-                            <div style={{display: 'flex', gap: '20px'}}>
+                            <div className="user-name">
                                 <Avatar
                                     initials={user.firstName[0] + user.lastName[0]}
                                     name={user.firstName + user.lastName}

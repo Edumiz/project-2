@@ -22,7 +22,6 @@ import FilterUsers from './component/FilterUsers';
 import SortUsers from './component/SortUsers';
 import { DashboardStyled, ActionStyled } from './styled';
 
-
 export default function Dashboard() {
   const navigate = useNavigate() 
   const [skip, setSkip] = useState(0)
@@ -33,7 +32,6 @@ export default function Dashboard() {
 
   const sortParams = useSelector((state: any) => state.sortParams);
   const [currSortParams, setCurrSortParams] = useState(sortParams)
-
 
   const {
       data: filteredUsersRes = [],

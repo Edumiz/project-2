@@ -1,4 +1,5 @@
 import {
+  Avatar,
   BlockStack,
   Button,
   ButtonGroup,
@@ -36,15 +37,22 @@ export default function ViewUser() {
                             <Text as="h2" variant="headingXl">
                                 User
                             </Text>
-                            <Text as="p" variant="bodyLg" fontWeight="bold">
-                                {user.firstName} {user.lastName}
-                            </Text>
-                            <Thumbnail
-                                source={(user.image) ? user.image : ""}
+                            <div style={{display: 'flex', gap: '20px'}}>
+                                <Avatar
+                                    initials={user.firstName[0] + user.lastName[0]}
+                                    name={user.firstName + user.lastName}
+                                    source={(user.image) ? user.image : ""}
+                                    // alt={"Avatar of " + user.firstName + user.lastName}
+                                >
+                                </Avatar>
+                                <Text as="p" variant="headingLg" fontWeight="bold">
+                                    {user.firstName} {user.lastName}
+                                </Text>
+                            </div>
+                            {/* <Thumbnail
                                 size='large'
-                                alt={"Avatar of " + user.firstName + user.lastName}
                             >
-                            </Thumbnail>
+                            </Thumbnail> */}
                         </BlockStack>
                         <BlockStack gap="200">
                             <InlineGrid columns="1fr auto">

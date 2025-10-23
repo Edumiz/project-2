@@ -4,6 +4,7 @@ import {
   Button,
   ButtonGroup,
   Card,
+  Divider,
   InlineGrid,
   Text
 } from '@shopify/polaris';
@@ -41,18 +42,14 @@ export default function ViewUser() {
                                     initials={user.firstName[0] + user.lastName[0]}
                                     name={user.firstName + user.lastName}
                                     source={(user.image) ? user.image : ""}
-                                    // alt={"Avatar of " + user.firstName + user.lastName}
                                 >
                                 </Avatar>
                                 <Text as="p" variant="headingLg" fontWeight="bold">
                                     {user.firstName} {user.lastName}
                                 </Text>
                             </div>
-                            {/* <Thumbnail
-                                size='large'
-                            >
-                            </Thumbnail> */}
                         </BlockStack>
+                        <Divider borderColor='border-inverse'></Divider>
                         <BlockStack gap="200">
                             <InlineGrid columns="1fr auto">
                                 <Text as="h3" variant="headingLg" fontWeight="medium">
